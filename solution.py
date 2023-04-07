@@ -13,6 +13,5 @@ def solution(p: float, x: np.array) -> tuple:
     alpha = 1 - p
     n = len(x)
     M = (x**2).sum()/n
-    scale = np.sqrt(M / 23)
-    return scale * np.sqrt(chi2.ppf(1 - alpha / 2, 2*n)), \
-           scale * np.sqrt(chi2.ppf(alpha / 2, 2*n))
+    return np.sqrt(M * chi2.ppf(1 - alpha / 2, 2*n) / 23), \
+           np.sqrt(M * chi2.ppf(alpha / 2, 2*n) / 23)
